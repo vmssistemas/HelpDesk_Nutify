@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Calendário - Debug</title>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/locales/pt-br.global.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .debug-info {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste de Calendário - Debug de Timezone</h1>
+    
+    <div class="debug-info">
+        <strong>Informações do Sistema:</strong><br>
+        Timezone do navegador: <span id="browser-timezone"></span><br>
+        Data/hora atual: <span id="current-time"></span><br>
+        Offset do timezone: <span id="timezone-offset"></span> minutos
+    </div>
+    
+    <div id="calendar"></div>
+    
+    <div class="debug-info">
+        <strong>Log de Debug:</strong>
+        <div id="debug-log" style="max-height: 200px; overflow-y: auto;"></div>
+    </div>
+
+    <script>
+        // Função para adicionar logs ao debug
+        function addDebugLog(message) {
+            const debugLog = document.getElementById('debug-log');
+            const timestamp = new Date().toLocaleTimeString();
+            debugLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+        }
+        
+        // Mostrar informações do sistema
+        document.getElementById('browser-timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        document.getElementById('current-time').textContent = new Date().toString();
+        document.getElementById('timezone-offset').textContent = new Date().getTimezoneOffset();
+        
+        // Função de formatação (mesma do script.js)
+        function formatDateTimeForInput(date) {
+            if (!date) return '';
+            
+            // Se for uma string, converte para objeto Date
+            if (typeof date === 'string') {
+                date = new Date(date);
+            }
+            
+            // Debug para investigar problema de timezone
+            addDebugLog('=== formatDateTimeForInput DEBUG ===');
+            addDebugLog(`Input date: ${date}`);
+            addDebugLog(`Input type: ${typeof date}`);
+            addDebugLog(`Date toString(): ${date.toString()}`);
+            addDebugLog(`Date getTime(): ${date.getTime()}`);
+            addDebugLog(`Date getTimezoneOffset(): ${date.getTimezoneOffset()}`);
+            
+            // Nova abordagem: usar Intl.DateTimeFormat para garantir consistência
+            try {
+                const formatter = new Intl.DateTimeFormat('sv-SE', {
+                    timeZone: 'America/Sao_Paulo',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+                
+                const parts = formatter.formatToParts(date);
+                addDebugLog(`Intl.DateTimeFormat parts: ${JSON.stringify(parts)}`);
+                
+                const year = parts.find(p => p.type === 'year').value;
+                const month = parts.find(p => p.type === 'month').value;
+                const day = parts.find(p => p.type === 'day').value;
+                const hour = parts.find(p => p.type === 'hour').value;
+                const minute = parts.find(p => p.type === 'minute').value;
+                
+                const formatted = `${year}-${month}-${day}T${hour}:${minute}`;
+                
+                addDebugLog(`Intl formatted: ${formatted}`);
+                addDebugLog('===================================');
+                
+                return formatted;
+            } catch (error) {
+                addDebugLog(`Erro na formatação com Intl: ${error}`);
+                
+                // Fallback: usar método simples sem conversão de timezone
+                const pad = (num) => String(num).padStart(2, '0');
+                const year = date.getFullYear();
+                const month = pad(date.getMonth() + 1);
+                const day = pad(date.getDate());
+                const hours = pad(date.getHours());
+                const minutes = pad(date.getMinutes());
+                
+                const formatted = `${year}-${month}-${day}T${hours}:${minutes}`;
+                
+                addDebugLog(`Fallback formatted: ${formatted}`);
+                addDebugLog('===================================');
+                
+                return formatted;
+            }
+        }
+        
+        // Inicializar calendário
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                timeZone: 'local',
+                locale: 'pt-br',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                editable: true,
+                selectable: true,
+                events: [
+                    {
+                        id: '1',
+                        title: 'Evento Teste',
+                        start: '2024-01-15T16:00:00',
+                        end: '2024-01-15T18:30:00',
+                        backgroundColor: '#007bff'
+                    },
+                    {
+                        id: '2',
+                        title: 'Outro Evento',
+                        start: '2024-01-16T14:00:00',
+                        end: '2024-01-16T15:30:00',
+                        backgroundColor: '#28a745'
+                    }
+                ],
+                eventDrop: function(info) {
+                    const event = info.event;
+                    addDebugLog(`=== EVENT DROP ===`);
+                    addDebugLog(`Evento: ${event.title}`);
+                    addDebugLog(`Start original: ${event.start.toString()}`);
+                    addDebugLog(`End original: ${event.end ? event.end.toString() : 'null'}`);
+                    
+                    const newStart = formatDateTimeForInput(event.start);
+                    const newEnd = event.end ? formatDateTimeForInput(event.end) : '';
+                    
+                    addDebugLog(`Start formatado: ${newStart}`);
+                    addDebugLog(`End formatado: ${newEnd}`);
+                    addDebugLog(`==================`);
+                },
+                eventResize: function(info) {
+                    const event = info.event;
+                    addDebugLog(`=== EVENT RESIZE ===`);
+                    addDebugLog(`Evento: ${event.title}`);
+                    addDebugLog(`Start: ${event.start.toString()}`);
+                    addDebugLog(`End: ${event.end ? event.end.toString() : 'null'}`);
+                    
+                    const newStart = formatDateTimeForInput(event.start);
+                    const newEnd = event.end ? formatDateTimeForInput(event.end) : '';
+                    
+                    addDebugLog(`Start formatado: ${newStart}`);
+                    addDebugLog(`End formatado: ${newEnd}`);
+                    addDebugLog(`====================`);
+                }
+            });
+            
+            calendar.render();
+            addDebugLog('Calendário inicializado');
+        });
+    </script>
+</body>
+</html>

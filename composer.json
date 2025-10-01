@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.2",
+        "microsoft/azure-storage-blob": "^1.5"
+    }
+}

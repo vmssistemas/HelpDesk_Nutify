@@ -1,0 +1,165 @@
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #023324;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.hr {
+    border: 1px solid #023324;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+
+header h1 {
+    margin: 0;
+}
+
+h2 {
+    color: #023324; /* Laranja dourado */
+}
+
+h3 {
+    color: black; /* Laranja dourado */
+}
+
+header nav {
+    margin-top: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+header nav a:hover {
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+
+main {
+    padding: 20px;
+    background-color: white; /* Fundo branco para destaque */
+    border-radius: 10px; /* Borda arredondada */
+    width: 80%; /* Define uma largura fixa */
+    margin: 20px auto; /* Centraliza horizontalmente */
+    box-shadow: 0px 0px 15px 5px rgba(244, 244, 244, 0.9); /* Efeito esfumado cinza claro */
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os campos */
+    width: 100%; /* Garante que o formulário ocupe a largura total */
+}
+
+main input,
+main button {
+    padding: 10px 15px; /* Aumenta o tamanho do input e do botão */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%; /* Faz o input ocupar toda a largura do container */
+    box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura */
+}
+
+main button {
+    background-color: #8CC053;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: auto; /* O botão mantém largura automática */
+    align-self: center; /* Centraliza o botão no formulário */
+    font-size: 16px; /* Aumenta o tamanho da fonte do botão */
+    padding: 10px 15px; /* Aumenta o tamanho do botão */
+}
+
+main button:hover {
+    background-color: #7FB449;
+}
+
+/* Estilos para o checkbox junto com a pergunta */
+main .linha-separadora {
+    display: inline-flex; /* Mantém o checkbox e o label na mesma linha */
+    align-items: center; /* Alinha verticalmente o checkbox com o texto */
+    gap: 5px; /* Diminuindo o espaço entre o label e o checkbox */
+}
+
+main .linha-separadora label {
+    margin-bottom: 0; /* Remove a margem inferior do label */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+}
+
+
+main .linha-separadora input[type="checkbox"] {
+    margin-left: 0; /* Remove qualquer margem à esquerda do checkbox */
+    margin-right: 1300px; /* Espaçamento à direita do checkbox */
+}
+
+
+
+section {
+    margin-bottom: 30px;
+}
+
+/* Estilos gerais para tabelas */
+/* Estilos gerais para tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap; /* Impede a quebra de linha */
+    overflow: hidden; /* Esconde o conteúdo que ultrapassar */
+    text-overflow: ellipsis; /* Adiciona "..." ao final do texto que não couber */
+    max-width: 200px; /* Define uma largura máxima para as células (ajuste conforme necessário) */
+}
+
+table th {
+    background-color: #023324;
+    color: white;
+}
+
+table td a {
+    color: #8CC053;
+    text-decoration: none;
+    margin-right: 10px;
+    display: inline-block; /* Permite que o link ocupe apenas o espaço necessário */
+    max-width: 100%; /* Limita a largura do link */
+    overflow: hidden; /* Esconde o conteúdo que ultrapassar */
+    text-overflow: ellipsis; /* Adiciona "..." ao final do texto que não couber */
+    white-space: nowrap; /* Impede a quebra de linha */
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+.sortable {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sortable li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    cursor: move;
+}
+
+.sortable li:hover {
+    background-color: #f1f1f1;
+}

@@ -1,0 +1,612 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #023324;
+    color: white;
+    padding: 11px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-contatos thead th {
+    color: #023324 !important;
+}
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+
+header nav {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    padding: 5px 10px; /* Botões menores */
+    background-color: #8CC053;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header nav a:hover {
+    background-color: #7FB449 /* Cor mais escura no hover */
+}
+
+main {
+    padding: 20px;
+    max-width: 100%;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-left: 20px; /* Margem à esquerda */
+    margin-right: 20px; /* Margem à direita */
+}
+
+/* Filtros */
+.filtros {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filtros h2 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #023324;
+}
+
+.filtros-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.filtro-group {
+    flex: 1;
+    min-width: 200px;
+    margin: 4px; /* Espaçamento ao redor de cada grupo */
+}
+
+.filtro-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #023324;
+}
+
+.filtro-group input,
+.filtro-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.filtro-group button {
+    background-color: #023324;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.filtro-group button:hover {
+    background-color: #023324;
+}
+
+.limpar-filtros {
+    color: #8CC053;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.limpar-filtros:hover {
+    color: #023324;
+}
+
+/* Contador de Atendimentos (mais discreto) */
+.contador-atendimentos {
+    color: #023324; /* Cor do texto */
+    font-size: 15px;
+    text-align: right; /* Alinhado à direita */
+    margin-bottom: 20px;
+    padding: 5px 10px; /* Espaçamento interno */
+    border-radius: 4px;
+    background-color: transparent; /* Fundo transparente */
+}
+
+/* Tabelas */
+/* Estilos Modernos para a Tabela */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 10px; /* Ajustado para subir a listagem */
+    border-radius: 12px; /* Bordas arredondadas */
+    overflow: hidden; /* Esconde as bordas internas para arredondar a tabela */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: white;
+}
+
+table th,
+table td {
+    padding: 12px 15px; /* Espaçamento interno maior */
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0; /* Linha divisória mais suave */
+}
+
+table th {
+    background-color: #023324; /* Cor alterada para o roxo do site (#023324) */
+    color: white;
+    font-weight: 600; /* Texto mais forte */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    font-size: 13px; /* Tamanho menor para o cabeçalho */
+    letter-spacing: 0.5px; /* Espaçamento entre letras */
+}
+
+table tr {
+    transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f8f8; /* Cor de fundo para linhas pares */
+}
+
+table tr:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+table td {
+    color: #333; /* Cor do texto mais suave */
+    font-size: 14px;
+}
+
+table td a {
+    color: #8CC053; /* Cor dos links */
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+table td a:hover {
+    color: #023324; /* Cor dos links ao passar o mouse */
+}
+
+/* Estilo para a primeira e última célula das linhas */
+table td:first-child,
+table th:first-child {
+    padding-left: 20px; /* Espaçamento maior à esquerda */
+}
+
+table td:last-child,
+table th:last-child {
+    padding-right: 20px; /* Espaçamento maior à direita */
+}
+
+/* Estilo para a última linha (sem borda inferior) */
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Tooltip para descrição */
+.descricao {
+    position: relative;
+    cursor: pointer;
+}
+
+.descricao:hover::after {
+    content: attr(data-tooltip); /* Usar data-tooltip para evitar conflitos */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1;
+    font-size: 12px;
+}
+
+/* Botões "Incluir Novo Atendimento" e "Voltar ao Site" */
+.botoes-acao {
+    margin-top: 20px; /* Ajustado para descer os botões */
+    display: flex;
+    gap: 10px;
+}
+
+.botoes-acao button {
+    background-color: #023324;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.botoes-acao button:hover {
+    background-color: #023324;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .filtros-form {
+        flex-direction: column;
+    }
+
+    .filtro-group {
+        width: 100%;
+    }
+
+    .filtro-group button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .limpar-filtros {
+        display: block;
+        text-align: center;
+    }
+}
+
+/* Estilo para o campo de seleção com filtro */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.custom-select .options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+}
+
+.custom-select .options div {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.custom-select .options div:hover {
+    background-color: #f1f1f1;
+}
+
+.custom-select .options div.selected {
+    background-color: #023324;
+    color: white;
+}
+/* Remover cores dos links dos cabeçalhos */
+table#tabela-clientes th a {
+    color: inherit; /* Mantém a cor padrão do texto */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+/* Estilo para ordenação */
+th a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+th a.asc:after {
+    content: " ▲";
+    color: #f1f1f1;
+}
+
+th a.desc:after {
+    content: " ▼";
+    color: #f1f1f1;
+}
+.container {
+    max-width: 1200px;
+    margin: 20px auto 0; /* Adiciona 20px de margem no topo e mantém a centralização */
+    padding: 20px;
+}
+
+
+.filtro-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.filtro-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.btn-novo-contato {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.btn-novo-contato:hover {
+    background-color: #45a049;
+}
+
+.table-contatos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-contatos th, .table-contatos td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.table-contatos th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+.table-contatos tr:hover {
+    background-color: #f9f9f9;
+}
+
+.acoes-contato {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-acao {
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-editar {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-acao:hover {
+    opacity: 0.9;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-cancelar {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-salvar {
+    background-color: #28a745;
+    color: white;
+}
+
+.button-container button:hover {
+    opacity: 0.9;
+}
+
+/* Mensagens flash */
+.mensagem-flash {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.mensagem-sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.mensagem-erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+/* Estilos para a barra de navegação */
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    background-color: #2c7a56;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-link:hover {
+    background-color: #1e563d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.nav-link i {
+    font-size: 14px;
+}
+
+/* Estilo especial para o botão de importar */
+.btn-importar {
+    background-color: #4a6baf;
+}
+
+.btn-importar:hover {
+    background-color: #3a5691;
+}
+
+/* Estilo especial para o botão de voltar */
+.btn-voltar {
+    background-color: #6c757d;
+}
+
+.btn-voltar:hover {
+    background-color: #5a6268;
+}
+
+/* Efeito ativo */
+.nav-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}

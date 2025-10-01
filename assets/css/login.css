@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #023324;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('../img/cinza.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#container {
+  width: 360px;
+  padding: 24px 24px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+
+#profile {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+#profile img {
+  width: 160px; /* Aumentei o tamanho da logo */
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left; /* Alinha os títulos à esquerda */
+}
+
+.input-group label {
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-color: #023324;
+}
+
+button {
+  padding: 12px;
+  background-color: #023324;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #022a1e;
+}
+
+/* Ajuste no footer para reduzir o espaço abaixo */
+footer {
+  padding: 16px 0 5px; /* Espaço acima e abaixo do conteúdo do footer */
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+footer a {
+  color: #023324;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* Espaçamento entre os ícones */
+  margin-bottom: 16px; /* Espaço entre os ícones e o texto do footer */
+  margin-top: 5px;
+}
+
+.social-icon {
+  font-size: 24px;
+  transition: color 0.2s, transform 0.2s; /* Adiciona transição suave */
+}
+
+.social-icon:hover {
+  opacity: 0.8; /* Efeito de hover */
+  transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
+}
+/* Estilos para o botão de alternância */
+#theme-toggle {
+  position: fixed;
+  top: 10px;
+  left: 20px; /* Alterado de 'right' para 'left' */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px; /* Reduzido o tamanho */
+  height: 24px; /* Reduzido o tamanho */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.2s;
+  border-radius: 24px; /* Bordas arredondadas */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px; /* Tamanho do círculo interno */
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%; /* Círculo perfeito */
+}
+
+input:checked + .slider {
+  background-color: #8CC053; /* Cor do tema escuro */
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px); /* Movimento do círculo */
+}
+
+#theme-label {
+  font-size: 14px;
+  color: #023324; /* Cor padrão (tema claro) */
+  font-weight: 500;
+  transition: color 0.2s; /* Transição suave para a cor do texto */
+}
+
+/* Quando o tema escuro estiver ativo */
+body.dark-theme #theme-label {
+  color: white; /* Texto branco no tema escuro */
+}

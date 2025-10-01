@@ -1,0 +1,3114 @@
+/* Definindo a variável para o tamanho da fonte do submenu */
+:root {
+    --submenu-font-size: 0.90em;
+}
+
+/* Configuração do layout geral */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('../img/branca.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Garante que a imagem não se repita */
+}
+
+#eventoCor, label[for="eventoCor"] {
+    display: none !important;
+}
+
+/* Estilo para o cabeçalho (não fixo) */
+#main-header {
+    width: 100%;
+    background-color: #023324;
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: flex-end;  /* Alinha os itens à direita */
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    border-radius: 0; /* Remove o arredondamento */
+    box-sizing: border-box;
+}
+
+/* Novo cabeçalho fixo para logo e pesquisa */
+#fixed-header {
+    position: fixed;
+    top: 40px; /* Ajusta abaixo do cabeçalho principal */
+    left: 0;
+    width: 250px; /* Mesmo tamanho do menu */
+    background: #F4F4F4;
+    padding: 10px 20px;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#fixed-header img {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin-top: 21px;
+    margin-bottom: 40px;
+}
+
+/* Estilo para o container do campo de pesquisa */
+#search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o input de pesquisa */
+#search-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Estilo para o ícone "X" */
+#clearSearch {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1.2em;
+    display: none;
+}
+
+/* Efeito ao passar o mouse no ícone "X" */
+#clearSearch:hover {
+    color: #023324;
+}
+
+/* Estilos para o container da agenda */
+.agenda-container {
+    display: flex;
+    width: 100%;
+    height: auto; /* Permitindo altura automática */
+    max-height: 82vh; /* Diminuindo um pouquinho */
+    overflow: hidden; /* Controlando overflow */
+}
+
+/* Estilos para o filtro de cliente na agenda - versão discreta */
+.agenda-search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-bottom: 10px;
+    margin-right: 50px;
+    background: #f8f9fa;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    padding: 2px;
+    transition: all 0.2s ease;
+}
+
+.agenda-search-container:focus-within {
+    border-color: #2fcd35;;
+    background: #fff;
+}
+
+.agenda-search-input {
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 13px;
+    background: transparent;
+    color: #495057;
+    width: 200px;
+    border-radius: 4px;
+}
+
+.agenda-search-input::placeholder {
+    color: #6c757d;
+    font-style: normal;
+}
+
+.clear-filter-btn {
+    background: #6c757d;
+    border: none;
+    border-radius: 3px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 10px;
+    transition: background-color 0.2s ease;
+    margin-right: 2px;
+}
+
+.clear-filter-btn:hover {
+    background: #5a6268;
+}
+
+/* Remover o layout customizado das tabs - voltar ao padrão */
+
+.agenda-sidebar {
+    width: 220px;
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto; /* Restaurando scroll controlado */
+    height: auto; /* Altura automática */
+    max-height: 77vh; /* Diminuindo um pouquinho */
+    min-height: 400px;
+}
+
+.user-controls {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-select-all, .btn-deselect-all {
+    padding: 6px 12px;
+    border: 1px solid #4CAF50;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.btn-select-all:hover, .btn-deselect-all:hover {
+    background-color: #45a049;
+}
+
+.btn-deselect-all {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-deselect-all:hover {
+    background-color: #545b62;
+}
+
+.agenda-main {
+    flex: 1;
+    overflow-y: auto; /* Restaurando scroll controlado */
+    height: auto; /* Altura automática */
+    max-height: 77vh; /* Diminuindo um pouquinho */
+    display: flex;
+    flex-direction: column;
+}
+
+.agenda-users {
+    margin-top: 10px;
+}
+
+.user-filter-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.user-filter-checkbox {
+    margin-right: 8px;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-filter-checkbox:checked {
+    /* O fundo será definido dinamicamente via JavaScript */
+}
+
+.user-filter-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 1px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.user-name {
+    font-size: 14px;
+}
+
+/* Aumentar o espaço para clicar no final das colunas */
+.fc-timegrid-col-events {
+    padding-bottom: 20px !important;
+}
+
+/* Ajustar o tamanho do calendário para ocupar todo o espaço disponível */
+#calendar {
+    width: 100%;
+    height: auto; /* Altura automática */
+    max-height: 72vh; /* Diminuindo um pouquinho */
+    flex: 1;
+}
+
+#perfil-container {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;  /* Adiciona um espaçamento entre o perfil e o botão */
+    font-size: 14px;
+}
+
+#perfil-container strong {
+    font-weight: bold;
+}
+
+/* Estilo para o botão de logout */
+#logoutButton {
+    background: none; /* Remove qualquer fundo ou cor de fundo */
+    border: none; /* Remove a borda do botão */
+    color: white; /* Define a cor do texto como branco */
+    font-size: 0.9em; /* Define o tamanho da fonte como 90% do tamanho da fonte base */
+    cursor: pointer; /* Define o cursor como uma mãozinha (indica que é clicável) */
+    display: flex; /* Torna o botão um container flexível */
+    align-items: center; /* Alinha os itens (ícone e texto) verticalmente ao centro */
+    gap: 8px; /* Define um espaço de 8px entre os itens dentro do botão (como o ícone e o texto) */
+    padding: 5px 10px; /* Define o preenchimento interno do botão: 5px em cima e embaixo, 10px à esquerda e à direita */
+}
+
+#logoutButton i {
+    font-size: 1.2em;
+}
+
+#logoutButton:hover {
+    transform: scale(1.1); /* Aumenta o botão em 10% */
+}
+
+/* Container principal para menu e conteúdo */
+#main-container {
+    display: flex;
+    flex: 1; /* Ocupa o espaço restante abaixo do cabeçalho */
+    overflow: hidden; /* Evita barras de rolagem desnecessárias */
+}
+
+/* Estilo para o menu à esquerda */
+#menu {
+    width: 250px;
+    background: #F4F4F4;
+    color: #000;
+    padding: 10px 20px;
+    height: calc(100vh - 230px); /* Ajusta a altura para não ultrapassar a tela */
+    text-align: left;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    position: fixed; /* Fixa o menu */
+    top: 225px; /* Aumentei o top para começar após o container fixo */
+    left: 0;
+    z-index: 998; /* Garante que o menu fique acima do conteúdo */
+}
+
+/* Estilo para os links do menu */
+#menu a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+/* Efeito ao passar o mouse nos links */
+#menu a:hover {
+    background: #023324;
+    color: white;
+}
+
+/* Estilo para os submenus (inicialmente ocultos) */
+.submenu {
+    display: none;
+    padding-left: 10px; /* Reduzi o padding-left */
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: var(--submenu-font-size);
+}
+
+/* Estilo para os itens do submenu */
+.submenu a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+/* Efeito ao passar o mouse nos links do submenu */
+.submenu a:hover {
+    background: #023324;
+    color: white;
+}
+
+/* Estilo para os itens do menu */
+.menu-item {
+    cursor: pointer;
+    padding: 10px 1px; /* Reduzido para 10px 5px */
+    display: flex;
+    align-items: center;
+    font-size: 0.95em;
+    margin: 10px;
+}
+
+/* Estilo para os ícones dentro dos itens do menu */
+.menu-item ion-icon {
+    margin-right: 15px;
+    font-size: 1.6em;
+    color: #023324;
+}
+
+/* Estilo do container de Links Úteis */
+#links-uteis-container {
+    margin-top: 30px;
+    margin-bottom: 30px; /* Adiciona espaço abaixo do container */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Estilo para os links dentro de Links Úteis */
+#links-uteis-container a {
+    color: #023324;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    display: block;
+    padding: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: text-decoration 0.3s; /* Adiciona transição suave */
+}
+
+/* Efeito ao passar o mouse nos links */
+#links-uteis-container a:hover {
+    color: #023324;
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+    background-color: transparent;
+}
+
+/* Estilo da linha separadora (hr) */
+.hr {
+    border: 1px solid #023324;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#content {
+    flex: 1;
+    padding: 0;
+    overflow-y: auto;
+    margin-left: 300px; /* Ajusta a margem para o menu fixo */
+    margin-top: 5px; /* Ajusta a margem para o cabeçalho fixo */
+    margin-bottom: 20px; /* Adiciona margem inferior para evitar cortes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinha o conteúdo no topo */
+    width: calc(100% - 300px); /* Ajusta a largura para o menu fixo */
+    max-height: calc(100vh - 60px); /* Limita a altura máxima considerando o cabeçalho */
+}
+
+/* Estilo da mensagem de boas-vindas */
+#welcome-message {
+    text-align: center; /* Alinha o texto à esquerda */
+    margin-top: 20px; /* Mantém o espaçamento superior */
+}
+
+/* Estilo para a mensagem de boas-vindas */
+#welcome-message h1 {
+    color: #023324; /* Cor do título no modo claro */
+}
+
+#welcome-message p {
+    color: #666; /* Cor do parágrafo no modo claro */
+}
+
+/* Estilo para a mensagem de boas-vindas no modo escuro */
+body.dark-theme #welcome-message h1 {
+    color: white; /* Cor do título no modo escuro */
+}
+
+body.dark-theme #welcome-message p {
+    color: white; /* Cor do parágrafo no modo escuro */
+}
+
+/* Estilo para o container de mídia (vídeos e documentação) */
+#media-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px; /* Reduzi o espaçamento superior */
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 1200px; /* Limita a largura máxima */
+    overflow-x: auto; /* Habilita o scroll horizontal */
+    white-space: nowrap; /* Impede que os itens quebrem para a próxima linha */
+}
+
+/* Estilo para o container de vídeo */
+.video-scroll-container {
+    display: flex;
+    justify-content: flex-start; /* Alinha os vídeos à esquerda */
+    align-items: center;
+    overflow-x: auto; /* Habilita o scroll horizontal */
+    gap: 20px;
+    padding: 10px 0;
+    margin: 0 auto; /* Centraliza o container */
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+}
+
+/* Estilo para cada vídeo */
+.video-scroll-container iframe {
+    width: 85vw;  /* 85% da largura da tela */
+    height: calc(85vw * 9 / 16); /* Mantém a proporção 16:9 */
+    max-width: 1100px; /* Aumentei o limite máximo */
+    max-height: 618px; /* Mantém proporção 16:9, mas maior */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex: 0 0 auto; /* Impede que os vídeos encolham */
+}
+
+/* Mostra o vídeo ativo */
+.video-scroll-container iframe.active {
+    display: block;
+}
+
+/* Estilo para os controles de navegação */
+#video-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+#video-controls ion-icon {
+    font-size: 2em;
+    cursor: pointer;
+    color: #023324;
+    transition: color 0.3s;
+}
+
+#video-controls ion-icon:hover {
+    color: #8CC053;
+}
+
+/* Estilo para o indicador de vídeo atual */
+#videoCounter {
+    font-size: 1.2em;
+    margin: 0 20px;
+    color: #023324;
+    font-weight: bold;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    #content {
+        margin-left: 0; /* Remove a margem esquerda */
+        width: 100%; /* Ocupa toda a largura da tela */
+        padding-left: 20px; /* Adiciona um padding para não colar no menu */
+    }
+
+    #menu {
+        width: 100%; /* Ocupa toda a largura da tela */
+        height: auto; /* Altura automática */
+        position: relative; /* Remove a posição fixa */
+        top: 0; /* Remove o posicionamento fixo */
+        box-shadow: none; /* Remove a sombra */
+    }
+
+    #fixed-header {
+        width: 100%; /* Ocupa toda a largura da tela */
+        position: relative; /* Remove a posição fixa */
+        top: 0; /* Remove o posicionamento fixo */
+        box-shadow: none; /* Remove a sombra */
+    }
+
+    #main-container {
+        flex-direction: column; /* Altera o layout para coluna */
+    }
+
+    #content-container {
+        width: 100%; /* Ocupa toda a largura da tela */
+        padding-left: 20px; /* Adiciona um padding para não colar no menu */
+    }
+}
+
+/* Estilo para a seção de documentação */
+.documentation {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 1200px; /* Limita a largura máxima */
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-bottom: 30px;
+}
+
+.documentation h2 {
+    color: #023324;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.documentation ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 0.9em;
+}
+
+.documentation ul li {
+    font-family: inherit;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #023324;
+}
+
+/* Estilo unificado para todos os links */
+.documentation a {
+    color: #007BFF;
+    text-decoration: none;    
+}
+
+.documentation a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Estilo para o texto pré-formatado */
+.documentation ul li pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Estilo para o botão de alterar senha */
+#alterarSenhaButton {
+    background: none;
+    border: none;
+    color: #023324;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    /*margin-left: 40px; /* Espaçamento entre o nome do usuário e o botão */
+}
+
+#alterarSenhaButton i {
+    font-size: 1.2em;
+}
+
+#alterarSenhaButton:hover {
+    color: #8CC053;
+}
+
+/* Estilo para o formulário de alteração de senha */
+#alterarSenhaForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 300px;
+}
+
+#closeSenhaForm {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+#closeSenhaForm:hover {
+    color: #8CC053;
+}
+
+#alterarSenhaForm .input-group {
+    margin-bottom: 15px;
+}
+
+#alterarSenhaForm .input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+#alterarSenhaForm .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#alterarSenhaForm button {
+    width: 100%;
+    padding: 12px;
+    background-color: #8CC053;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#alterarSenhaForm button:hover {
+    background-color: #8CC053;
+}
+/* Estilo para o overlay */
+.overlay {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    z-index: 1000; /* Fica acima de tudo, exceto o formulário */
+}
+
+.senha-form-container {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 1001; /* Fica acima do overlay */
+}
+
+.senha-form-container.visible {
+    display: block;
+}
+/* Quando o overlay estiver visível */
+.overlay.visible {
+    display: block;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.success-message {
+    text-align: center;
+    color: green;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #c62828;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}
+
+#alterarSenhaForm h2 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-top: 1px;
+    color: #8CC053;
+    font-weight: bold;
+}
+/* Estilo para o título da página */
+#page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333; /* Cor padrão para o modo claro */
+}
+
+/* Estilo para o título da página no modo escuro */
+body.dark-theme #page-title {
+    color: white; /* Cor do texto no modo escuro */
+}
+/* Estilo para o botão de administração (igual ao botão de alterar senha) */
+#adminButton {
+    background: none; /* Remove qualquer fundo ou cor de fundo */
+    border: none; /* Remove a borda do botão */
+    color: #023324; /* Define a cor do texto como branco */
+    font-size: 0.9em; /* Define o tamanho da fonte como 90% do tamanho da fonte base */
+    cursor: pointer; /* Define o cursor como uma mãozinha (indica que é clicável) */
+    display: flex; /* Torna o botão um container flexível */
+    align-items: center; /* Alinha os itens (ícone e texto) verticalmente ao centro */
+    gap: 8px; /* Define um espaço de 8px entre os itens dentro do botão (como o ícone e o texto) */
+    padding: 5px 10px; /* Define o preenchimento interno do botão: 5px em cima e embaixo, 10px à esquerda e à direita */
+    /*margin-left: 10px; /* Espaçamento entre o nome do usuário e o botão */
+}
+
+#adminButton i {
+    font-size: 1.2em;
+}
+
+#adminButton:hover {
+    color: #8CC053;
+}
+/* Estilo para o botão de administração (igual ao botão de alterar senha) */
+#adminAtendimentoButton {
+    background: none; /* Remove qualquer fundo ou cor de fundo */
+    border: none; /* Remove a borda do botão */
+    color: #023324; /* Define a cor do texto como branco */
+    font-size: 0.9em; /* Define o tamanho da fonte como 90% do tamanho da fonte base */
+    cursor: pointer; /* Define o cursor como uma mãozinha (indica que é clicável) */
+    display: flex; /* Torna o botão um container flexível */
+    align-items: center; /* Alinha os itens (ícone e texto) verticalmente ao centro */
+    gap: 8px; /* Define um espaço de 8px entre os itens dentro do botão (como o ícone e o texto) */
+    padding: 5px 10px; /* Define o preenchimento interno do botão: 5px em cima e embaixo, 10px à esquerda e à direita */
+    /*margin-left: 10px; /* Espaçamento entre o nome do usuário e o botão */
+}
+
+#adminAtendimentoButton i {
+    font-size: 1.2em;
+}
+
+#adminAtendimentoButton:hover {
+    /*transform: scale(1.1); /* Aumenta o botão em 10% */
+    color: #8CC053;
+}
+
+/* Estilo para o botão de administração (igual ao botão de alterar senha) */
+#adminClienteButton {
+    background: none; /* Remove qualquer fundo ou cor de fundo */
+    border: none; /* Remove a borda do botão */
+    color: #023324; /* Define a cor do texto como branco */
+    font-size: 0.9em; /* Define o tamanho da fonte como 90% do tamanho da fonte base */
+    cursor: pointer; /* Define o cursor como uma mãozinha (indica que é clicável) */
+    display: flex; /* Torna o botão um container flexível */
+    align-items: center; /* Alinha os itens (ícone e texto) verticalmente ao centro */
+    gap: 8px; /* Define um espaço de 8px entre os itens dentro do botão (como o ícone e o texto) */
+    padding: 5px 10px; /* Define o preenchimento interno do botão: 5px em cima e embaixo, 10px à esquerda e à direita */
+    /*margin-left: 10px; /* Espaçamento entre o nome do usuário e o botão */
+}
+
+#adminClienteButton i {
+    font-size: 1.2em;
+}
+
+#adminClienteButton:hover {
+    /*transform: scale(1.1); /* Aumenta o botão em 10% */
+    color: #8CC053;
+}
+/* Estilos para o botão de alternância */
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto; /* Empurra o restante do conteúdo para a direita */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 36px; /* Aumentado um pouco (era 30px) */
+    height: 22px; /* Aumentado um pouco (era 18px) */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.2s;
+    border-radius: 24px; /* Bordas arredondadas */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Tamanho do círculo interno aumentado (era 14px) */
+    width: 18px; /* Tamanho do círculo interno aumentado (era 14px) */
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.2s;
+    border-radius: 50%; /* Círculo */
+}
+
+/* Quando o switch está ativo */
+input:checked + .slider:before {
+    transform: translateX(14px); /* Ajuste o valor para o espaçamento desejado */
+}
+
+input:checked + .slider {
+    background-color: #8CC053; /* Cor do tema escuro */
+}
+
+
+#theme-label {
+    font-size: 14px;
+    color: white; /* Cor padrão (tema claro) */
+    font-weight: 500;
+    transition: color 0.2s; /* Transição suave para a cor do texto */
+}
+
+/* Quando o tema escuro estiver ativo */
+body.dark-theme #theme-label {
+    color: white; /* Texto branco no tema escuro */
+}
+/* Estilo padrão para a mensagem de "Nenhum vídeo disponível" */
+.no-videos-message {
+    color: #333; /* Cor padrão para o modo claro */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para a mensagem de "Nenhum vídeo disponível" no modo escuro */
+body.dark-theme .no-videos-message {
+    color: white; /* Cor do texto no modo escuro */
+}
+/* Estilo padrão para a mensagem de "Nenhuma documentação disponível" */
+.no-docs-message {
+    color: #333; /* Cor padrão para o modo claro */
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para a mensagem de "Nenhuma documentação disponível" no modo escuro */
+body.dark-theme .no-docs-message {
+    color: white; /* Cor do texto no modo escuro */
+}
+#toggle-menu-button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Espaçamento entre o botão de menu e o botão de tema */
+    margin-left: -10px; /* Move o botão para a esquerda */
+    cursor: pointer;
+    padding: 5px; /* Adiciona um pouco de espaço interno */
+    transition: transform 0.1s ease; /* Adiciona uma transição suave para o efeito de zoom */
+}
+#toggle-menu-button:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do botão em 10% ao passar o mouse */
+}
+
+#toggle-menu-button ion-icon {
+    font-size: 39px;
+    color: white;
+}
+
+/* Estilo quando o menu está fechado (ícone de lado) */
+#toggle-menu-button.menu-closed ion-icon {
+    transform: rotate(90deg); /* Gira o ícone 90 graus */
+}
+/* Estilo para o container de configuração */
+#configContainer {
+    display: none;
+    position: absolute;
+    top: 50px; /* Distância do topo */
+    right: 20px; /* Alinha à direita */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 180px; /* Largura do container */
+}
+
+
+#configContainer.visible {
+    display: block;
+}
+/* Estilo para o botão de alternância de tema dentro do container de configurações */
+#configContainer #theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px; /* Espaçamento entre o botão de tema e os outros botões */
+}
+#configContainer #theme-label {
+    font-size: 14px;
+    color: #023324; /* Cor do texto no tema claro */
+    font-weight: 500;
+    transition: color 0.2s; /* Transição suave para a cor do texto */
+}
+
+/* Quando o tema escuro estiver ativo */
+body.dark-theme #configContainer #theme-label {
+    color: #023324; /* Texto branco no tema escuro */
+}
+
+#configButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+#configButton i {
+    font-size: 1.2em;
+}
+
+#configButton:hover {
+    transform: scale(1.05);
+}
+#knowledge-container {
+    position: relative;
+    margin-right: auto;
+}
+
+#knowledgeButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+#knowledgeButton:hover {
+    transform: scale(1.05);
+}
+
+#knowledgeMenu {
+    display: none;
+    position: absolute;
+    top: 42px; /* Distância fixa de 40 pixels do topo */ /* Mais distante do botão */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 180px;
+}
+
+#knowledgeMenu a {
+    color: #023324;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+}
+
+#knowledgeMenu a:hover {
+    color: #8CC053;
+}
+
+#knowledgeMenu.visible {
+    display: block;
+}
+/* Estilo para o container do suporte */
+#support-container {
+    position: relative;
+    margin-right: 20px; /* Espaçamento entre os botões */
+}
+
+/* Estilo para o botão de suporte */
+#supportButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+#supportButton:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para o menu de suporte */
+#supportMenu {
+    display: none;
+    position: absolute;
+    top: 42px; /* Distância fixa de 40 pixels do topo */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 180px;
+}
+
+#supportMenu a {
+    color: #023324;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+    margin-bottom: 2px; /* Aumenta o espaço entre os itens */
+}
+
+#supportMenu a:hover {
+    color: #8CC053;
+}
+
+#supportMenu.visible {
+    display: block;
+}
+#graficos-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os gráficos passem para a próxima linha */
+    gap: 20px; /* Espaçamento entre os gráficos */
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding: 20px;
+}
+
+.grafico-wrapper {
+    flex: 1 1 calc(33.33% - 20px); /* Cada gráfico ocupa 1/3 do espaço, menos o gap */
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaçamento interno */
+    position: relative;
+    min-width: 300px; /* Largura mínima para evitar que fiquem muito pequenos */
+}
+
+.grafico-wrapper h4 {
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    font-size: 13px;
+    color: #333333;
+    margin: 0;
+    font-weight: 600;
+}
+.modern-chart {
+    width: 100% !important; /* Largura total do container */
+    height: 300px !important; /* Altura ajustada para os gráficos */
+}
+    /* Estilos para o modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 2% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 1200px;
+        height: 90vh;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Responsividade do modal */
+    @media (max-width: 1200px) {
+        .modal-content {
+            width: 95%;
+            height: 85vh;
+            margin: 1% auto;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 98%;
+            height: 95vh;
+            margin: 1% auto;
+            padding: 15px;
+        }
+        
+        .modal-header h2 {
+            font-size: 18px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .modal-content {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            border-radius: 0;
+            padding: 10px;
+        }
+        
+        .modal-header h2 {
+            font-size: 16px;
+        }
+    }
+
+#eventoForm {
+    flex: 1;
+    min-width: 400px;
+}
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+        margin: 0;
+        font-size: 20px; /* Mantive o tamanho da fonte em 20px */
+        color: #023324;
+    }
+
+    /* Estilos para a legenda da agenda */
+    .agenda-legend {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin: 0 20px;
+    }
+
+    .legend-title {
+        font-weight: bold;
+        color: #023324;
+        font-size: 14px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+    }
+
+    .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        display: inline-block;
+    }
+
+    .legend-name {
+        color: #333;
+        font-weight: 500;
+    }
+
+    .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+    }
+
+    /* Ajuste para o iframe dentro do modal */
+    iframe {
+        flex: 1; /* O iframe ocupa o espaço restante */
+        width: 100%;
+        border: none;
+    }
+    /* Estilos para o menu de Treinamento */
+#training-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#trainingButton {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.training-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.training-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+
+.training-menu.visible {
+    display: block;
+}
+
+/* Estilos para o menu de Cadastros */
+#register-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#registerButton {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.register-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.register-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+
+.register-menu.visible {
+    display: block;
+}
+/* Estilos para o menu de Treinamento */
+#training-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#trainingButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+#trainingButton:hover {
+    transform: scale(1.05);
+}
+
+#trainingMenu {
+    display: none;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 180px;
+}
+
+#trainingMenu a {
+    color: #023324;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+    margin-bottom: 2px;
+}
+
+#trainingMenu a:hover {
+    color: #8CC053;
+}
+
+#trainingMenu.visible {
+    display: block;
+}
+
+/* Estilos para o menu de Cadastros */
+#register-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#registerButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+#registerButton:hover {
+    transform: scale(1.05);
+}
+
+#registerMenu {
+    display: none;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 180px;
+}
+
+#registerMenu a {
+    color: #023324;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+    margin-bottom: 2px;
+}
+
+
+/* Estilos para a legenda da agenda */
+.agenda-legend {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+
+.legend-title {
+    font-weight: bold;
+    color: #023324;
+    font-size: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+.legend-name {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Estilos para as abas da agenda */
+.agenda-tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.agenda-tabs .close {
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0 10px;
+}
+
+.agenda-tabs .close:hover,
+.agenda-tabs .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    position: relative;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.tab-button.active {
+    color: #023324;
+    font-weight: bold;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #8CC053;
+}
+
+.tab-content {
+    display: none;
+    overflow: hidden;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Responsividade das abas */
+@media (max-width: 768px) {
+    .agenda-tabs {
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .tab-button {
+        padding: 8px 16px;
+        font-size: 14px;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-button {
+        padding: 6px 12px;
+        font-size: 13px;
+        min-width: 100px;
+    }
+    
+    .tab-content {
+        padding: 0 5px;
+    }
+}
+
+/* Container para eventos excluídos com scroll */
+#deletedEventsList {
+    max-height: 700px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Container para histórico de alterações com scroll */
+#changesHistoryList {
+    max-height: 700px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Estilos para a tabela de eventos excluídos */
+.deleted-events-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+/* Estilos para a tabela de histórico de alterações */
+.changes-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.deleted-events-table th, 
+.deleted-events-table td,
+.changes-history-table th,
+.changes-history-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.deleted-events-table th,
+.changes-history-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.deleted-events-table tr:hover,
+.changes-history-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.btn-restore {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-restore:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-restore:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+/* Botão para ver detalhes do evento no histórico de alterações */
+.btn-view-details,
+.btn-view-event {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-view-details:hover,
+.btn-view-event:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-view-details:active,
+.btn-view-event:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
+}
+
+/* Controles de paginação */
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px 20px;
+}
+
+.pagination-info {
+    font-size: 14px;
+    color: #666;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn.active {
+    background-color: #3788d8;
+    color: white;
+    border-color: #3788d8;
+}
+
+/* Responsividade da tabela */
+@media (max-width: 768px) {
+    .deleted-events-table th,
+    .deleted-events-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .deleted-events-table th:nth-child(3),
+    .deleted-events-table td:nth-child(3),
+    .deleted-events-table th:nth-child(5),
+    .deleted-events-table td:nth-child(5),
+    .deleted-events-table th:nth-child(6),
+    .deleted-events-table td:nth-child(6) {
+        display: none;
+    }
+    
+    .btn-restore {
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+    }
+    
+    .pagination-controls {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    .pagination-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    #deletedEventsList {
+        max-height: 600px;
+    }
+    
+    .deleted-events-table th:nth-child(1),
+    .deleted-events-table td:nth-child(1) {
+        display: none;
+    }
+    
+    .deleted-events-table th,
+    .deleted-events-table td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+}
+#registerMenu a:hover {
+    color: #8CC053;
+}
+
+#registerMenu.visible {
+    display: block;
+}
+/* Estilos para a Agenda */
+#calendar {
+    margin: 0 auto;
+    max-width: 100%;
+    height: 650px; /* Reduzido de 800px para 650px para evitar cortes */
+    overflow: hidden;
+}
+
+/* Responsividade do calendário */
+@media (max-width: 1200px) {
+    #calendar {
+        height: 580px; /* Reduzido de 700px para 580px */
+    }
+}
+
+@media (max-width: 768px) {
+    #calendar {
+        height: 500px; /* Reduzido de 600px para 500px */
+    }
+    
+    /* Ajustar botões do FullCalendar em telas pequenas */
+    .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .fc-toolbar-chunk {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .fc-button {
+        font-size: 12px !important;
+        padding: 4px 8px !important;
+    }
+    
+    .fc-toolbar-title {
+        font-size: 16px !important;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #calendar {
+        height: 400px;
+    }
+    
+    .fc-button {
+        font-size: 10px !important;
+        padding: 3px 6px !important;
+    }
+    
+    .fc-toolbar-title {
+        font-size: 14px !important;
+    }
+    
+    /* Ocultar alguns botões em telas muito pequenas */
+    .fc-dayGridMonth-button,
+    .fc-timeGridWeek-button {
+        display: none !important;
+    }
+}
+
+.fc-event {
+    cursor: pointer;
+}
+
+/* Modal de Evento */
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#eventoModal .modal-body {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+/* Estilos para o modal do calendário (mantém o layout original) */
+#agendaModal .modal-body {
+    display: block;
+    flex: 1;
+    overflow-y: auto; /* Restaurando scroll controlado */
+    max-height: calc(94vh - 90px); /* Diminuindo um pouquinho */
+    height: auto; /* Altura automática */
+}
+
+/* Garantir que o calendário tenha altura adequada em telas menores */
+#agendaModal #calendar {
+    min-height: 500px;
+}
+
+/* Melhorias específicas para telas menores */
+@media (max-width: 768px) {
+    #agendaModal .modal-body {
+        max-height: calc(97vh - 70px); /* Diminuindo um pouquinho para telas médias */
+        overflow-y: auto; /* Restaurando scroll controlado */
+    }
+    
+    #agendaModal #calendar {
+        max-height: 67vh; /* Diminuindo um pouquinho para telas médias */
+    }
+}
+
+@media (max-width: 480px) {
+    #agendaModal .modal-body {
+        max-height: calc(98vh - 50px); /* Diminuindo um pouquinho para telas pequenas */
+        overflow-y: auto; /* Restaurando scroll controlado */
+    }
+    
+    #agendaModal #calendar {
+        max-height: 62vh; /* Diminuindo um pouquinho para telas pequenas */
+    }
+    
+    /* Ajustar tabs para telas muito pequenas */
+    .agenda-tabs {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .tab-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Linha do horário atual */
+.current-time-line {
+    position: absolute;
+    height: 2px;
+    background-color: #ff0000;
+    z-index: 1000;
+    pointer-events: none;
+    /* Removido left: 0 e right: 0 para permitir posicionamento dinâmico */
+}
+
+.current-time-indicator {
+    position: absolute;
+    left: -8px;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+/* Garantir que a linha seja visível apenas na visualização semanal e diária */
+.fc-timeGridWeek-view .current-time-line,
+.fc-timeGridDay-view .current-time-line {
+    display: block;
+}
+
+.fc-dayGridMonth-view .current-time-line {
+    display: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primaryy {
+    background-color: #3788d8;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+#eventoHistorico {
+    flex: 1;
+    display: block !important;
+    margin-top: 0;
+    border-top: none;
+    border-left: 1px solid #eee;
+    padding-left: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.historico-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.historico-item:hover {
+    background-color: #f0f0f0;
+    transform: translateX(5px);
+}
+.historico-item:last-child {
+    border-bottom: none;
+}
+
+.historico-acao {
+    font-weight: bold;
+    color: #3788d8;
+    margin-bottom: 5px;
+}
+
+.historico-usuario, .historico-data {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.historico-dados {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    font-size: 0.85em;
+}
+
+.historico-dados ul {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+.historico-dados li {
+    margin-bottom: 3px;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 900px) {
+    .modal-body {
+        flex-direction: column;
+    }
+    
+    #eventoHistorico {
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding-left: 0;
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+}
+/* Estilo do botão da agenda */
+.agenda-btn {
+    position: relative;
+    background: linear-gradient(135deg, #4f6b31, #8CC053);
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 30px;
+}
+
+.agenda-btn:hover {
+    background: linear-gradient(135deg, #8CC053, #4f6b31);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.agenda-btn:active {
+    transform: translateY(0);
+}
+
+.agenda-btn i {
+    font-size: 16px;
+}
+
+
+
+/* Adicione no media query para responsividade */
+@media (max-width: 768px) {
+    .agenda-btn .btn-text {
+        display: none;
+    }
+    .agenda-btn {
+        padding: 10px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+    }
+}
+
+/* Estilos para o menu de contexto */
+.context-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    min-width: 180px;
+    padding: 4px 0;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.context-menu-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.context-menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+.context-menu-icon {
+    margin-right: 8px;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Estilos para submenu */
+.context-submenu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10001;
+    min-width: 180px;
+    padding: 4px 0;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.submenu-trigger {
+    position: relative;
+}
+
+.submenu-arrow {
+    margin-left: auto;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Proteções visuais para eventos da agenda */
+.fc-event {
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    transition: all 0.2s ease !important;
+    /* Adicionando borda preta fina para separar eventos */
+    border: 1px solid #000000 !important;
+    margin: 1px !important;
+    /* Corrigir posicionamento dos eventos para não ultrapassar as linhas de horário */
+    max-height: calc(100% - 6px) !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    /* Adicionar margem direita para deixar espaço para outros eventos */
+    margin-right: 12% !important;
+    width: 88% !important;
+}
+
+.fc-event:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Garantir que eventos não sejam arrastáveis visualmente */
+.fc-event {
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* Proteção contra quebras de layout */
+.fc-event-title {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    padding: 2px 6px !important;
+    color: white !important; /* Branco para tema claro - semana e dia */
+    font-weight: 600 !important;
+}
+
+/* Estilos para horários dos eventos */
+.fc-event-time {
+    color: white !important; /* Branco para tema claro - semana e dia */
+    font-weight: 600 !important;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+/* Estilos gerais para texto dos eventos */
+.fc-event-main {
+    color: white !important; /* Branco para tema claro - semana e dia */
+    font-weight: 600 !important;
+}
+
+.fc-event-main-frame {
+    color: white !important; /* Branco para tema claro - semana e dia */
+    font-weight: 600 !important;
+}
+
+/* Estilos específicos para visualização mensal - fonte preta no tema claro */
+.fc-daygrid-event .fc-event-title {
+    color: #131314 !important; /* Preto para tema claro - apenas visualização mensal */
+    font-weight: 600 !important;
+}
+
+.fc-daygrid-event .fc-event-time {
+    color: #131314 !important; /* Preto para tema claro - apenas visualização mensal */
+    font-weight: 600 !important;
+}
+
+.fc-list-event-time {
+    color: white !important; /* Branco para tema claro - semana e dia */
+    font-weight: 600 !important;
+}
+
+/* Garantir que as bordas laterais sejam sempre visíveis */
+.fc-event {
+    border-left-width: 4px !important;
+    border-left-style: solid !important;
+    min-height: 20px !important;
+}
+
+/* Classes para os diferentes estados dos eventos */
+.fc-event.evento-concluido {
+    border-left-color: #28a745 !important; /* Verde para concluído */
+}
+
+.fc-event.evento-nao-concluido {
+    border-left-color: #dc3545 !important; /* Vermelho para não concluído */
+}
+
+.fc-event.evento-pendente {
+    border-left-color: #6c757d !important; /* Cinza para pendente */
+}
+
+/* Garantir que as classes tenham prioridade sobre outros estilos */
+.fc-event.evento-concluido,
+.fc-event.evento-nao-concluido,
+.fc-event.evento-pendente {
+    border-left-width: 4px !important;
+    border-left-style: solid !important;
+}
+
+/* Melhorar a separação visual entre eventos adjacentes */
+.fc-timegrid-event {
+    border: 1px solid #000000 !important;
+    margin: 1px 0 !important;
+    /* Garantir que eventos não ultrapassem os slots de tempo */
+    max-height: calc(100% - 4px) !important;
+    box-sizing: border-box !important;
+    /* Adicionar margem direita para deixar espaço para outros eventos */
+    margin-right: 12% !important;
+    width: 88% !important;
+}
+
+/* Para eventos na visualização de grade diária */
+.fc-daygrid-event {
+    border: 1px solid #000000 !important;
+    margin: 1px !important;
+    box-sizing: border-box !important;
+    /* Adicionar margem direita para deixar espaço para outros eventos */
+    margin-right: 12% !important;
+    width: 88% !important;
+}
+
+/* Garantir espaçamento adequado entre eventos */
+.fc-timegrid-col-events {
+    padding: 2px !important;
+}
+
+/* Proteções adicionais para blindar a agenda */
+#calendar {
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+}
+
+/* Proteção contra sobreposição de elementos */
+.fc-toolbar {
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+.fc-view-harness {
+    overflow: hidden !important;
+}
+
+/* Proteção para modais da agenda */
+#eventoModal {
+    z-index: 9999 !important;
+    backdrop-filter: blur(2px) !important;
+}
+
+#eventoModal .modal-dialog {
+    margin: 30px auto !important;
+    max-width: 90% !important;
+}
+
+#eventoModal .modal-content {
+    border-radius: 8px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+}
+
+/* Proteção para formulários */
+#eventoModal .form-control {
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    transition: border-color 0.2s ease !important;
+}
+
+#eventoModal .form-control:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25) !important;
+    outline: none !important;
+}
+
+/* Proteção contra quebras de responsividade */
+@media (max-width: 768px) {
+    #calendar {
+        font-size: 12px !important;
+    }
+    
+    .fc-event {
+        font-size: 11px !important;
+        min-height: 18px !important;
+    }
+    
+    .fc-toolbar {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    
+    .fc-toolbar-chunk {
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+/* Proteção contra elementos flutuantes */
+.fc-popover {
+    z-index: 1050 !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    border: 1px solid #ddd !important;
+}
+
+/* Garantir que botões sejam sempre clicáveis */
+.fc-button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.fc-button:disabled {
+    pointer-events: none !important;
+    opacity: 0.6 !important;
+}
+
+/* Estilos para o campo de busca de cliente */
+.cliente-search-container {
+    position: relative;
+    width: 100%;
+}
+
+.cliente-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.cliente-search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.cliente-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cliente-option {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.cliente-option:hover,
+.cliente-option.selected {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+
+.cliente-option:last-child {
+    border-bottom: none;
+}
+
+/* Scrollbar personalizada para o dropdown */
+.cliente-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cliente-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.cliente-dropdown::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.cliente-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Estilos para o dropdown de cliente no modal de agendamento */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#cliente_options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    z-index: 1000;
+    display: none;
+}
+
+/* Garantir que o select oculto fique invisível */
+#eventoCliente {
+    display: none !important;
+}
+
+#cliente_options div {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+#cliente_options div:hover {
+    background-color: #f1f1f1;
+}
+
+#cliente_options div.selected {
+    background-color: #023324;
+    color: white;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .cliente-dropdown {
+        max-height: 150px;
+    }
+    
+    .cliente-option {
+        padding: 12px;
+        font-size: 16px; /* Evita zoom no iOS */
+    }
+    
+    .cliente-search-input {
+        font-size: 16px; /* Evita zoom no iOS */
+    }
+}
+
+/* ========================================
+   ESTILOS PARA TEMA ESCURO DA AGENDA
+   ======================================== */
+
+/* Modal da agenda - tema escuro */
+body.dark-theme #agendaModal .modal-content {
+    background-color: #2d2d2d !important;
+    color: white !important;
+    border: 1px solid #444 !important;
+}
+
+/* Sidebar da agenda - tema escuro */
+body.dark-theme .agenda-sidebar {
+    background-color: #1a1a1a !important;
+    border-right: 1px solid #444 !important;
+    color: white !important;
+}
+
+body.dark-theme .agenda-sidebar h3 {
+    color: white !important;
+}
+
+/* Controles de usuário - tema escuro */
+body.dark-theme .btn-select-all, 
+body.dark-theme .btn-deselect-all {
+    background-color: #4CAF50 !important;
+    border-color: #4CAF50 !important;
+    color: white !important;
+}
+
+body.dark-theme .btn-select-all:hover, 
+body.dark-theme .btn-deselect-all:hover {
+    background-color: #45a049 !important;
+}
+
+body.dark-theme .btn-deselect-all {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+body.dark-theme .btn-deselect-all:hover {
+    background-color: #545b62 !important;
+}
+
+/* Lista de usuários - tema escuro */
+body.dark-theme .user-filter-item {
+    color: white !important;
+}
+
+body.dark-theme .user-name {
+    color: white !important;
+}
+
+
+
+
+/* Filtro de cliente na agenda - tema escuro */
+body.dark-theme .agenda-search-container {
+    background: #4a4a4a !important;
+    border: 2px solid #4CAF50 !important;
+}
+
+body.dark-theme .agenda-search-container:focus-within {
+    border-color: #2fcd35 !important;
+    background: #555555 !important;
+}
+
+body.dark-theme .agenda-search-input {
+    color: white !important;
+}
+
+body.dark-theme .agenda-search-input::placeholder {
+    color: #cccccc !important;
+}
+
+body.dark-theme .clear-filter-btn {
+    background: #6c757d !important;
+    color: white !important;
+}
+
+body.dark-theme .clear-filter-btn:hover {
+    background: #5a6268 !important;
+}
+
+/* Abas da agenda - tema escuro */
+body.dark-theme .agenda-tabs {
+    background-color: #2d2d2d !important;
+    border-bottom: 1px solid #444 !important;
+}
+
+body.dark-theme .tab-button {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-theme .tab-button:hover {
+    background-color: #444 !important;
+}
+
+body.dark-theme .tab-button.active {
+    
+    color: white !important;
+    border-bottom-color: #2d2d2d !important;
+}
+
+body.dark-theme .agenda-tabs .close {
+    color: white !important;
+}
+
+body.dark-theme .agenda-tabs .close:hover,
+body.dark-theme .agenda-tabs .close:focus {
+    color: #ccc !important;
+}
+
+/* Conteúdo das abas - tema escuro */
+body.dark-theme .tab-content {
+    background-color: #2d2d2d !important;
+    color: white !important;
+}
+
+/* FullCalendar - tema escuro */
+body.dark-theme #calendar {
+    background-color: #2d2d2d !important;
+    color: white !important;
+}
+
+/* Toolbar do calendário - tema escuro */
+body.dark-theme .fc-toolbar {
+    background-color: #2d2d2d !important;
+}
+
+body.dark-theme .fc-toolbar-title {
+    color: white !important;
+}
+
+body.dark-theme .fc-button-primary {
+    background-color: #4CAF50 !important;
+    border-color: #37b43b !important;
+    color: white !important;
+}
+
+body.dark-theme .fc-button-primary:hover {
+    background-color: #3c943f !important;
+    border-color: #034d36 !important;
+}
+
+body.dark-theme .fc-button-primary:disabled {
+    background-color: #666 !important;
+    border-color: #666 !important;
+}
+
+/* Botão ativo (aba selecionada) - tema escuro */
+body.dark-theme .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #2d5a2d !important;
+    border-color: #1e3f1e !important;
+    color: white !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+/* Cabeçalho do calendário - tema escuro */
+body.dark-theme .fc-col-header {
+    background-color: #1a1a1a !important;
+}
+
+body.dark-theme .fc-col-header-cell {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .fc-col-header-cell-cushion {
+    color: white !important;
+}
+
+/* Células do calendário - tema escuro */
+body.dark-theme .fc-daygrid-day,
+body.dark-theme .fc-timegrid-col {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .fc-daygrid-day-number {
+    color: white !important;
+}
+
+/* Linhas de horário - tema escuro (MANTENDO AS LINHAS VERTICAIS) */
+body.dark-theme .fc-timegrid-slot {
+    border-color: #444 !important;
+}
+
+body.dark-theme .fc-timegrid-axis {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .fc-timegrid-axis-cushion {
+    color: white !important;
+}
+
+/* Linhas verticais de separação dos dias - MANTENDO VISÍVEIS */
+body.dark-theme .fc-timegrid-col-frame {
+    border-color: #444 !important;
+}
+
+body.dark-theme .fc-scrollgrid-sync-table {
+    border-color: #444 !important;
+}
+
+/* Eventos do calendário - tema escuro */
+/* REMOVIDO: Preservando cores originais dos eventos para identificação */
+
+/* Cores das fontes dos eventos - tema escuro (cores escuras para semana/dia) */
+body.dark-theme .fc-event-title {
+    color: #131314 !important;
+}
+
+body.dark-theme .fc-event-time {
+    color: #131314 !important;
+}
+
+body.dark-theme .fc-event-main {
+    color: #131314 !important;
+}
+
+body.dark-theme .fc-event-main-frame {
+    color: #131314 !important;
+}
+
+/* Estilos específicos para visualização mensal - fonte clara no tema escuro */
+body.dark-theme .fc-daygrid-event .fc-event-title {
+    color: white !important;
+}
+
+body.dark-theme .fc-daygrid-event .fc-event-time {
+    color: white !important; /* Branco para tema escuro - apenas visualização mensal */
+}
+
+body.dark-theme .fc-list-event-time {
+    color: #131314 !important;
+}
+
+/* Destaque do dia atual - tema escuro */
+body.dark-theme .fc-day-today {
+    background-color: rgba(140, 192, 83, 0.2) !important;
+}
+
+body.dark-theme .fc-col-header-cell.fc-day-today {
+    background-color: rgba(140, 192, 83, 0.3) !important;
+}
+
+body.dark-theme .fc-timegrid-col.fc-day-today {
+    background-color: rgba(140, 192, 83, 0.1) !important;
+}
+
+/* Modal de evento - tema escuro */
+body.dark-theme #eventoModal .modal-content {
+    background-color: #2d2d2d !important;
+    color: white !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-theme #eventoModal .modal-header {
+    
+    border-bottom: 1px solid #444 !important;
+}
+
+body.dark-theme #eventoModal .modal-header h2 {
+    color: white !important;
+}
+
+body.dark-theme #eventoModal .close {
+    color: white !important;
+}
+
+body.dark-theme #eventoModal .close:hover {
+    color: #ccc !important;
+}
+
+/* Formulário do evento - tema escuro */
+body.dark-theme #eventoModal .form-group label {
+    color: white !important;
+}
+
+body.dark-theme #eventoModal .form-control {
+    background-color: #333 !important;
+    border-color: #666 !important;
+    color: white !important;
+}
+
+body.dark-theme #eventoModal .form-control:focus {
+    background-color: #333 !important;
+    border-color: #4CAF50 !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.2rem rgba(33, 134, 13, 0.25) !important;
+}
+
+body.dark-theme #eventoModal select.form-control {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+body.dark-theme #eventoModal select.form-control option {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+/* Botões do formulário - tema escuro */
+body.dark-theme #eventoModal .btn-primaryy {
+    background-color: #023324 !important;
+    border-color: #023324 !important;
+}
+
+body.dark-theme #eventoModal .btn-primaryy:hover {
+    background-color: #034d36 !important;
+    border-color: #034d36 !important;
+}
+
+body.dark-theme #eventoModal .btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+body.dark-theme #eventoModal .btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+/* Histórico do evento - tema escuro */
+body.dark-theme #eventoHistorico {
+    background-color: #2d2d2d !important;
+    border-left-color: #444 !important;
+    color: white !important;
+}
+
+body.dark-theme .historico-item {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+body.dark-theme .historico-item:hover {
+    background-color: #444 !important;
+}
+
+body.dark-theme .historico-acao {
+    color: #8CC053 !important;
+}
+
+body.dark-theme .historico-usuario, 
+body.dark-theme .historico-data {
+    color: #ccc !important;
+}
+
+body.dark-theme .historico-dados {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+    color: white !important;
+}
+
+/* Tabela de eventos excluídos - tema escuro */
+body.dark-theme .deleted-events-table {
+    background-color: #2d2d2d !important;
+    color: white !important;
+}
+
+body.dark-theme .deleted-events-table th {
+    background-color: #1a1a1a !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .deleted-events-table td {
+    background-color: #2d2d2d !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .deleted-events-table tr:hover {
+    background-color: #444 !important;
+}
+
+body.dark-theme .deleted-events-table tr:hover td {
+    background-color: #444 !important;
+    color: white !important;
+}
+
+/* Tabela de histórico de alterações - tema escuro */
+body.dark-theme .changes-history-table {
+    background-color: #2d2d2d !important;
+    color: white !important;
+}
+
+body.dark-theme .changes-history-table th {
+    background-color: #1a1a1a !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .changes-history-table td {
+    background-color: #2d2d2d !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+body.dark-theme .changes-history-table tr:hover {
+    background-color: #444 !important;
+}
+
+body.dark-theme .changes-history-table tr:hover td {
+    background-color: #444 !important;
+    color: white !important;
+}
+
+/* Lista de histórico de alterações - tema escuro */
+body.dark-theme #changesHistoryList {
+    background-color: #2d2d2d !important;
+    color: white !important;
+    border-color: #444 !important;
+}
+
+/* Botões de visualizar detalhes - tema escuro */
+body.dark-theme .btn-view-details,
+body.dark-theme .btn-view-event {
+    background: linear-gradient(135deg, #28a745, #20c997) !important;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3) !important;
+}
+
+body.dark-theme .btn-view-details:hover,
+body.dark-theme .btn-view-event:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34) !important;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4) !important;
+}
+
+/* Dropdown de cliente - tema escuro */
+body.dark-theme .custom-select input {
+    background-color: #333 !important;
+    border-color: #666 !important;
+    color: white !important;
+}
+
+body.dark-theme #cliente_options {
+    background-color: #333 !important;
+    border-color: #666 !important;
+}
+
+body.dark-theme #cliente_options div {
+    color: white !important;
+}
+
+body.dark-theme #cliente_options div:hover {
+    background-color: #444 !important;
+}
+
+body.dark-theme #cliente_options div.selected {
+    background-color: #023324 !important;
+    color: white !important;
+}
+
+/* Lista de eventos excluídos - tema escuro */
+body.dark-theme #deletedEventsList {
+    background-color: #2d2d2d !important;
+    color: white !important;
+}
+
+/* Popover do calendário - tema escuro */
+body.dark-theme .fc-popover {
+    background-color: #333 !important;
+    border-color: #666 !important;
+    color: white !important;
+}
+
+body.dark-theme .fc-popover-header {
+    background-color: #1a1a1a !important;
+    border-bottom-color: #444 !important;
+    color: white !important;
+}
+
+body.dark-theme .fc-popover-body {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+/* Scrollbars personalizadas para tema escuro */
+body.dark-theme .agenda-sidebar::-webkit-scrollbar,
+body.dark-theme .agenda-main::-webkit-scrollbar,
+body.dark-theme #calendar::-webkit-scrollbar {
+    width: 8px;
+}
+
+body.dark-theme .agenda-sidebar::-webkit-scrollbar-track,
+body.dark-theme .agenda-main::-webkit-scrollbar-track,
+body.dark-theme #calendar::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+body.dark-theme .agenda-sidebar::-webkit-scrollbar-thumb,
+body.dark-theme .agenda-main::-webkit-scrollbar-thumb,
+body.dark-theme #calendar::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+body.dark-theme .agenda-sidebar::-webkit-scrollbar-thumb:hover,
+body.dark-theme .agenda-main::-webkit-scrollbar-thumb:hover,
+body.dark-theme #calendar::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* ========================================
+   ESTILOS PARA TEMA ESCURO DO MODAL DE ATENDIMENTO RÁPIDO
+   ======================================== */
+
+/* Modal de atendimento rápido - tema escuro */
+body.dark-theme #atendimentoModal .modal-content {
+    background-color: #1a1a1a !important;
+    color: white !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-theme #atendimentoModal .modal-header {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #444 !important;
+}
+
+body.dark-theme #atendimentoModal .modal-header h2 {
+    color: white !important;
+}
+
+body.dark-theme #atendimentoModal .close {
+    color: white !important;
+}
+
+body.dark-theme #atendimentoModal .close:hover {
+    color: #ccc !important;
+}
+
+/* Iframe do modal - tema escuro */
+body.dark-theme #atendimentoModal #modalIframe {
+    border: 1px solid #444 !important;
+}

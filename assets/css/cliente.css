@@ -1,0 +1,1055 @@
+/* Estilos Gerais Aumentados */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px; /* Aumentado de 13px */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.5; /* Aumentado de 1.4 */
+}
+
+header {
+    background-color: #023324;
+    color: white;
+    padding: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px; /* Aumentado de 20px */
+    font-weight: bold;
+}
+
+header nav {
+    margin: 12px 0; /* Aumentado de 10px */
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 6px 12px; /* Aumentado de 4px 8px */
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-size: 15px; /* Adicionado */
+}
+
+header nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Container Principal */
+.cadastro-cliente {
+    max-width: 1250px; /* Aumentado de 980px */
+    margin: 20px auto; /* Aumentado de 15px */
+    padding: 20px; /* Aumentado de 15px */
+    background-color: white;
+    border-radius: 8px; /* Aumentado de 6px */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.section-title {
+    color: #023324;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #8CC053;
+    grid-column: 1 / -1;
+}
+
+/* Sistema de abas */
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-button:hover {
+    background-color: #eee;
+    color: #023324;
+}
+
+.tab-button.active {
+    color: #023324;
+    border-bottom-color: #8CC053;
+    background-color: white;
+}
+
+.tab-content {
+    display: none;
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Ajustes para o layout compacto */
+.form-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.form-main-fields {
+    display: grid;
+    gap: 12px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-group {
+    margin-bottom: 10px; /* Aumentado de 5px */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px; /* Aumentado de 3px */
+    font-weight: 600;
+    color: #023324;
+    font-size: 14px; /* Aumentado de 13px */
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px; /* Aumentado de 7px */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Aumentado de 4px */
+    font-size: 14px; /* Aumentado de 13px */
+    box-sizing: border-box;
+    height: 40px; /* Adicionado para padronizar altura */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #023324;
+    box-shadow: 0 0 0 3px rgba(73,38,86,0.1); /* Aumentado de 2px */
+}
+
+/* Coluna Direita - Contatos, Módulos e Observações */
+.form-secondary-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Aumentado de 12px */
+}
+
+/* Ajustes para contatos */
+.contatos-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contatos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px; /* Aumentado de 8px */
+}
+
+.contatos-header h3 {
+    margin: 0;
+    font-size: 16px; /* Aumentado de 14px */
+}
+
+.contatos-header button {
+    padding: 8px 15px; /* Aumentado */
+    font-size: 14px; /* Adicionado */
+}
+
+.contatos-list {
+    flex-grow: 1;
+    max-height: none;
+}
+
+.contato-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0; /* Aumentado de 6px */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.contato-item:last-child {
+    border-bottom: none;
+}
+
+.contato-info {
+    font-size: 14px; /* Adicionado */
+}
+
+.contato-tipo {
+    font-size: 13px; /* Adicionado */
+}
+
+.modulos-container {
+    margin-top: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.modulos-container fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.modulos-container legend {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #023324;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+/* Ajustes para os editores de texto */
+.tab-content .ck-editor {
+    height: calc(100% - 20px);
+}
+
+
+.tab-content .ck-editor__editable {
+    min-height: 300px !important;
+    max-height: 300px !important;
+}
+
+.observacoes {
+    margin-top: 10px; /* Aumentado de 5px */
+}
+
+.observacoes label {
+    display: block;
+    margin-bottom: 8px; /* Aumentado de 5px */
+    font-weight: 600;
+    color: #023324;
+    font-size: 16px; /* Adicionado */
+}
+
+/* Estilo para os campos de observações */
+.observacoes {
+    margin-top: 15px;
+}
+
+.observacoes label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+
+.ck-editor {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.ck-content {
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* CKEditor Aumentado */
+.ck-editor__editable {
+    min-height: 150px !important; /* Aumentado de 120px */
+    max-height: 150px !important; /* Aumentado de 120px */
+    font-size: 14px; /* Aumentado de 13px */
+    padding: 12px !important; /* Aumentado de 8px */
+    border: 1px solid #ddd !important;
+}
+
+/* Botão de Ação */
+.button-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 20px; /* Aumentado de 15px */
+    padding-top: 15px; /* Aumentado de 10px */
+    border-top: 1px solid #eee;
+}
+
+button {
+    background-color: #8CC053;
+    color: white;
+    border: none;
+    padding: 10px 25px; /* Aumentado de 8px 20px */
+    border-radius: 5px; /* Aumentado de 4px */
+    font-size: 15px; /* Aumentado de 13px */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: 40px; /* Adicionado */
+}
+
+button:hover {
+    background-color:  #7FB449
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px; /* Aumentado de 15px */
+    width: 90%;
+    max-width: 700px; /* Aumentado de 600px */
+    border-radius: 6px; /* Aumentado de 5px */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px; /* Aumentado de 24px */
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #777;
+}
+
+/* Tabela no Modal */
+#lista-contatos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px; /* Aumentado de 13px */
+}
+
+#lista-contatos th {
+    text-align: left;
+    padding: 12px; /* Aumentado de 8px */
+    background-color: #f2f2f2;
+    font-size: 14px; /* Adicionado */
+}
+
+#lista-contatos td {
+    padding: 12px; /* Aumentado de 8px */
+    border-bottom: 1px solid #eee;
+    font-size: 14px; /* Adicionado */
+}
+
+#lista-contatos select {
+    padding: 8px; /* Aumentado de 5px */
+    font-size: 14px; /* Aumentado de 13px */
+    height: 38px; /* Adicionado */
+}
+
+#lista-contatos button {
+    padding: 8px 15px; /* Aumentado de 5px 10px */
+    font-size: 14px; /* Aumentado de 12px */
+    height: auto; /* Adicionado */
+}
+
+/* Mensagens */
+#mensagem {
+    display: none;
+    padding: 15px; /* Aumentado de 10px */
+    margin: 15px auto; /* Aumentado de 10px */
+    border-radius: 5px; /* Aumentado de 4px */
+    max-width: 700px; /* Aumentado de 600px */
+    text-align: center;
+    font-size: 15px; /* Adicionado */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
+.client-tabs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; /* Garante que ocupa toda a largura */
+}
+
+.client-tabs-container h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 15px 20px;
+    font-weight: 600;
+    background-color: rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.client-tabs {
+    display: flex;
+    justify-content: center; /* Centraliza as abas */
+    gap: 0;
+    padding: 0 20px;
+    background-color: rgba(0,0,0,0.05);
+}
+
+
+.client-tab {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+     padding: 12px 25px; /* Aumenta o padding para melhor espaçamento */
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    position: relative;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+}
+
+.client-tab:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.client-tab.active {
+    color: white;
+    font-weight: 500;
+    background-color: transparent;
+    border-bottom-color: #8CC053;
+}
+
+.client-tab i {
+    font-size: 0.9rem;
+}
+
+/* Adicione isso para um efeito moderno nas abas */
+.client-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: #8CC053;
+    transition: all 0.3s;
+}
+
+.client-tab:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.client-tab.active::after {
+    display: none;
+}
+
+/* No arquivo cliente.css */
+
+.back-link {
+    margin-right: auto; /* Alterado de margin-left para margin-right */
+    margin-left: 0;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.back-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-2px);
+}
+
+.back-link i {
+    transition: transform 0.2s;
+}
+
+.back-link:hover i {
+    transform: translateX(-3px);
+}
+
+/* Container das abas de conteúdo */
+.tab-content-container {
+    display: none;
+}
+
+.tab-content-container.active {
+    display: block;
+}
+/* Estilos para a aba de chamados */
+.chamados-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.chamados-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.chamados-header h3 {
+    margin: 0;
+    color: #023324;
+    font-size: 18px;
+}
+
+.chamados-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.stat-item i {
+    color: #8CC053;
+}
+
+#lista-chamados {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#lista-chamados th {
+    text-align: left;
+    padding: 15px 12px;
+    background-color: #023324;
+    font-weight: 600;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+#lista-chamados td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+}
+
+#lista-chamados tr:not(:first-child):hover {
+    background-color: #f5f9f2;
+}
+
+/* Melhorias nos badges */
+.status-badge, .priority-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+}
+
+
+.priority-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.chamados-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.chamados-pagination button {
+    background: #8CC053;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chamados-pagination button:hover {
+    background: #7FB449;
+}
+
+.chamados-pagination button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+#page-info {
+    font-size: 14px;
+    color: #555;
+}
+/* Cores específicas para status */
+.bg-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.bg-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.bg-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.bg-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Cores específicas para prioridades */
+.bg-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.bg-dark {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Links na tabela */
+#lista-chamados a {
+    color: #023324;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+#lista-chamados a:hover {
+    color: #8CC053;
+    text-decoration: underline;
+}
+
+/* Botões de ação */
+.btn-action {
+    display: inline-block;
+    padding: 5px 8px;
+    margin: 0 3px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background-color: #e2e6ea;
+    text-decoration: none !important;
+}
+
+/* Container da tabela */
+.chamados-list-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+/* Estilos para a aba de atendimentos */
+.atendimentos-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.atendimentos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.atendimentos-header h3 {
+    margin: 0;
+    color: #023324;
+    font-size: 18px;
+}
+
+.atendimentos-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.atendimentos-list-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#lista-atendimentos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#lista-atendimentos th {
+    text-align: left;
+    padding: 15px 12px;
+    background-color: #023324;
+    font-weight: 600;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+#lista-atendimentos td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+}
+
+#lista-atendimentos tr:not(:first-child):hover {
+    background-color: #f5f9f2;
+}
+
+.atendimentos-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.atendimentos-pagination button {
+    background: #8CC053;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.atendimentos-pagination button:hover {
+    background: #7FB449;
+}
+
+.atendimentos-pagination button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+#page-info-atendimentos {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Estilo para o nível de dificuldade */
+.nivel-dificuldade {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    min-width: 80px;
+}
+
+.descricao-atendimento {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Estilos para a aba de treinamentos */
+.treinamentos-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.treinamentos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.treinamentos-header h3 {
+    margin: 0;
+    color: #023324;
+    font-size: 18px;
+}
+
+.treinamentos-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.treinamentos-list-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#lista-treinamentos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#lista-treinamentos th {
+    text-align: left;
+    padding: 15px 12px;
+    background-color: #023324;
+    font-weight: 600;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+#data_inativacao {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#lista-treinamentos td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+}
+
+#lista-treinamentos tr:not(:first-child):hover {
+    background-color: #f5f9f2;
+}
+
+.treinamentos-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.treinamentos-pagination button {
+    background: #8CC053;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.treinamentos-pagination button:hover {
+    background: #7FB449;
+}
+
+.treinamentos-pagination button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+#page-info-treinamentos {
+    font-size: 14px;
+    color: #555;
+}
+/* Estilos para a aba de instalações */
+.instalacoes-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.instalacoes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.instalacoes-header h3 {
+    margin: 0;
+    color: #023324;
+    font-size: 18px;
+}
+
+.instalacoes-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.instalacoes-list-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#lista-instalacoes {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#lista-instalacoes th {
+    text-align: left;
+    padding: 15px 12px;
+    background-color: #023324;
+    font-weight: 600;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+#lista-instalacoes td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+}
+
+#lista-instalacoes tr:not(:first-child):hover {
+    background-color: #f5f9f2;
+}
+
+.instalacoes-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.instalacoes-pagination button {
+    background: #8CC053;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.instalacoes-pagination button:hover {
+    background: #7FB449;
+}
+
+.instalacoes-pagination button:disabled {
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+#page-info-instalacoes {
+    font-size: 14px;
+    color: #555;
+}
